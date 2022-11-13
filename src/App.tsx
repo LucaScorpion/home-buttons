@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import logo from './logo.svg';
-import './App.css';
 import { useService } from './hooks/useService';
 import { HassService } from './services/HassService';
 

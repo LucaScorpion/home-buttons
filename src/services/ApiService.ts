@@ -13,9 +13,12 @@ export class ApiService {
     };
   }
 
-  private static async handleResponse<T>(resPromise: Promise<Response>): Promise<T> {
+  private static async handleResponse<T>(
+    resPromise: Promise<Response>
+  ): Promise<T> {
     const response = await resPromise;
-    const responseBody = response.status === 204 ? undefined : await response.json();
+    const responseBody =
+      response.status === 204 ? undefined : await response.json();
 
     if (response.status >= 400) {
       throw responseBody;
@@ -33,7 +36,7 @@ export class ApiService {
     method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
     path: string,
     body?: unknown,
-    params?: Record<string, string>,
+    params?: Record<string, string>
   ): Promise<T> {
     const headers = this.defaultHeaders;
     if (body) {
@@ -45,7 +48,7 @@ export class ApiService {
         method,
         headers,
         body: body ? JSON.stringify(body) : undefined,
-      }),
+      })
     );
   }
 
@@ -53,7 +56,11 @@ export class ApiService {
     return this.jsonRequest('GET', path, undefined, params);
   }
 
-  public jsonPost<T, S>(path: string, body: T, params?: Record<string, string>): Promise<S> {
+  public jsonPost<T, S>(
+    path: string,
+    body: T,
+    params?: Record<string, string>
+  ): Promise<S> {
     return this.jsonRequest<S>('POST', path, body, params);
   }
 }

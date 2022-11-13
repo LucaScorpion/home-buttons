@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './style/index.scss';
 import { App } from './App';
 import { Injector } from './services/Injector';
 import { InjectionProvider } from './hooks/useService';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement,
+  document.getElementById('root') as HTMLElement
 );
 
 const injector = new Injector();
@@ -16,5 +16,5 @@ root.render(
     <InjectionProvider value={injector}>
       <App />
     </InjectionProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
