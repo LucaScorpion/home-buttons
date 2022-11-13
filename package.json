@@ -7,7 +7,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier": "prettier \"src/**/*.scss\"",
+    "prettier": "prettier \"src/**/*.{scss,json}\"",
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "eslint \"src/**/*.{tsx,ts}\" --max-warnings 0",
     "lint:prettier": "npm run prettier -- -c",
@@ -16,6 +16,8 @@
     "format:prettier": "npm run prettier -- -w"
   },
   "devDependencies": {
+    "@mdi/js": "^7.0.96",
+    "@mdi/react": "^1.6.1",
     "@types/node": "^16.18.3",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",

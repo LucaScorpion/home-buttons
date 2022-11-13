@@ -1,0 +1,17 @@
+{
+  "iconSize": 4,
+  "buttons": [
+    {
+      "label": "Woonkamer",
+      "icon": "mdiWallSconceRound"
+    },
+    {
+      "label": "Tafel",
+      "icon": "mdiGlobeLight"
+    },
+    {
+      "label": "Rotan",
+      "icon": "mdiFloorLamp"
+    }
+  ]
+}
