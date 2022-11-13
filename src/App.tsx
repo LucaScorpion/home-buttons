@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useService } from './hooks/useService';
+import { HassService } from './services/HassService';
 
-function App() {
+export const App = () => {
+  const hass = useService(HassService);
+
+  useEffect(() => {
+    hass.ping().then(console.log);
+  });
+
   return (
     <div className="App">
       <header className="App-header">
@@ -21,6 +29,4 @@ function App() {
       </header>
     </div>
   );
-}
-
-export default App;
+};
