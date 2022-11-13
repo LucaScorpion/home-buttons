@@ -3,15 +3,18 @@
   "buttons": [
     {
       "label": "Woonkamer",
-      "icon": "mdiWallSconceRound"
+      "icon": "mdiWallSconceRound",
+      "entity": "light.ikea_of_sweden_tradfri_bulb_e27_cws_806lm_light"
     },
     {
       "label": "Tafel",
-      "icon": "mdiGlobeLight"
+      "icon": "mdiGlobeLight",
+      "entity": "light.eettafel_lamp_light"
     },
     {
       "label": "Rotan",
-      "icon": "mdiFloorLamp"
+      "icon": "mdiFloorLamp",
+      "entity": "light.rotan_lamp_light"
     }
   ]
 }

@@ -1,6 +1,10 @@
 import { ApiService } from './ApiService';
 import { config } from '../config';
 
+export interface StateResult {
+  state: 'on' | 'off';
+}
+
 export class HassService {
   public static readonly NAME = 'HassService';
 
@@ -13,7 +17,17 @@ export class HassService {
     });
   }
 
-  public ping(): Promise<object> {
-    return this.api.jsonGet('/api/');
+  public getState(entityId: string): Promise<StateResult> {
+    return this.api.jsonGet(`/api/states/${entityId}`);
+  }
+
+  public callService(
+    domain: string,
+    service: string,
+    entityId: string
+  ): Promise<StateResult[]> {
+    return this.api.jsonPost(`/api/services/${domain}/${service}`, {
+      entity_id: entityId,
+    });
   }
 }
