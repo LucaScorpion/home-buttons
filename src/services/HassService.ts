@@ -3,6 +3,8 @@ import { config } from '../config';
 
 export interface StateResult {
   state: 'on' | 'off';
+  entity_id: string;
+  last_changed: string;
 }
 
 export class HassService {
@@ -21,13 +23,20 @@ export class HassService {
     return this.api.jsonGet(`/api/states/${entityId}`);
   }
 
-  public callService(
+  public async callService(
     domain: string,
     service: string,
     entityId: string
-  ): Promise<StateResult[]> {
-    return this.api.jsonPost(`/api/services/${domain}/${service}`, {
-      entity_id: entityId,
-    });
+  ): Promise<StateResult | undefined> {
+    const results: StateResult[] = await this.api.jsonPost(
+      `/api/services/${domain}/${service}`,
+      {
+        entity_id: entityId,
+      }
+    );
+
+    return results
+      .sort((a, b) => b.last_changed.localeCompare(a.last_changed))
+      .find((s) => s.entity_id === entityId);
   }
 }
