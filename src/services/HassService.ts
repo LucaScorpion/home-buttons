@@ -1,8 +1,10 @@
 import { ApiService } from './ApiService';
 import { config } from '../config';
 
+export type OnOffState = 'on' | 'off';
+
 export interface StateResult {
-  state: 'on' | 'off';
+  state: OnOffState;
   entity_id: string;
   last_changed: string;
 }
