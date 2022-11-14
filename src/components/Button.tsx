@@ -14,12 +14,18 @@ export interface Props {
   service?: string;
 }
 
+const updateInterval = 30_000;
+
 export const Button = ({ icon, label, entity, domain, service }: Props) => {
   const hass = useService(HassService);
   const [state, setState] = useState<OnOffState>();
 
   useEffect(() => {
-    hass.getState(entity).then((s) => setState(s.state));
+    const update = () => hass.getState(entity).then((s) => setState(s.state));
+    update();
+
+    const int = setInterval(update, updateInterval);
+    return () => clearInterval(int);
   }, [entity, hass]);
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
